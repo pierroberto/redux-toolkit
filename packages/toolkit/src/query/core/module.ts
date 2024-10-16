@@ -361,7 +361,7 @@ export interface ApiModules<
        */
       selectInvalidatedBy: (
         state: RootState<Definitions, string, ReducerPath>,
-        tags: ReadonlyArray<TagDescription<TagTypes>>,
+        tags: ReadonlyArray<TagDescription<TagTypes> | null | undefined>,
       ) => Array<{
         endpointName: string
         originalArgs: any
