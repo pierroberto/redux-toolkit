@@ -231,7 +231,7 @@ export type MutationSubState<D extends BaseEndpointDefinition<any, any, any>> =
 
 export type CombinedState<
   D extends EndpointDefinitions,
-  E extends string,
+  E extends string | null | undefined,
   ReducerPath extends string,
 > = {
   queries: QueryState<D>
@@ -241,8 +241,8 @@ export type CombinedState<
   config: ConfigState<ReducerPath>
 }
 
-export type InvalidationState<TagTypes extends string> = {
-  [_ in TagTypes]: {
+export type InvalidationState<TagTypes extends string | null | undefined> = {
+  [_ in Exclude<TagTypes, null | undefined>]: {
     [id: string]: Array<QueryCacheKey>
     [id: number]: Array<QueryCacheKey>
   }

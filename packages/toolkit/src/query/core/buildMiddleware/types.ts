@@ -42,7 +42,7 @@ export interface SubscriptionSelectors {
 export interface BuildMiddlewareInput<
   Definitions extends EndpointDefinitions,
   ReducerPath extends string,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
 > {
   reducerPath: ReducerPath
   context: ApiContext<Definitions>

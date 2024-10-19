@@ -60,7 +60,7 @@ export type Api<
   BaseQuery extends BaseQueryFn,
   Definitions extends EndpointDefinitions,
   ReducerPath extends string,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   Enhancers extends ModuleName = CoreModule,
 > = UnionToIntersection<
   ApiModules<BaseQuery, Definitions, ReducerPath, TagTypes>[Enhancers]

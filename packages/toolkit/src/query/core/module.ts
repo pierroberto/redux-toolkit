@@ -88,7 +88,7 @@ export interface ApiModules<
   BaseQuery extends BaseQueryFn,
   Definitions extends EndpointDefinitions,
   ReducerPath extends string,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
 > {
   [coreModuleName]: {
     /**
@@ -361,7 +361,7 @@ export interface ApiModules<
        */
       selectInvalidatedBy: (
         state: RootState<Definitions, string, ReducerPath>,
-        tags: ReadonlyArray<TagDescription<TagTypes> | null | undefined>,
+        tags: ReadonlyArray<TagDescription<TagTypes | null | undefined> | null | undefined>,
       ) => Array<{
         endpointName: string
         originalArgs: any

@@ -34,7 +34,7 @@ declare module '@reduxjs/toolkit/query' {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ReducerPath extends string,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    TagTypes extends string,
+    TagTypes extends string | null | undefined,
   > {
     [reactHooksModuleName]: {
       /**

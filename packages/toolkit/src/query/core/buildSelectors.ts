@@ -205,7 +205,7 @@ export function buildSelectors<
 
   function selectInvalidatedBy(
     state: RootState,
-    tags: ReadonlyArray<TagDescription<string> | null | undefined>,
+    tags: ReadonlyArray<TagDescription<string | null | undefined> | null | undefined>,
   ): Array<{
     endpointName: string
     originalArgs: any

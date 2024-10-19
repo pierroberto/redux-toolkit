@@ -214,7 +214,7 @@ export enum DefinitionType {
 }
 
 export type GetResultDescriptionFn<
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   QueryArg,
   ErrorType,
@@ -236,7 +236,7 @@ export type TagDescription<TagType> = TagType | FullTagDescription<TagType>
  * @public
  */
 export type ResultDescription<
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   QueryArg,
   ErrorType,
@@ -248,7 +248,7 @@ export type ResultDescription<
 type QueryTypes<
   QueryArg,
   BaseQuery extends BaseQueryFn,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   ReducerPath extends string = string,
 > = BaseEndpointTypes<QueryArg, BaseQuery, ResultType> & {
@@ -274,7 +274,7 @@ type QueryTypes<
  * @public
  */
 export interface QueryExtraOptions<
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   QueryArg,
   BaseQuery extends BaseQueryFn,
@@ -529,7 +529,7 @@ export interface QueryExtraOptions<
 export type QueryDefinition<
   QueryArg,
   BaseQuery extends BaseQueryFn,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   ReducerPath extends string = string,
 > = BaseEndpointDefinition<QueryArg, BaseQuery, ResultType> &
@@ -538,7 +538,7 @@ export type QueryDefinition<
 type MutationTypes<
   QueryArg,
   BaseQuery extends BaseQueryFn,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   ReducerPath extends string = string,
 > = BaseEndpointTypes<QueryArg, BaseQuery, ResultType> & {
@@ -564,7 +564,7 @@ type MutationTypes<
  * @public
  */
 export interface MutationExtraOptions<
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   QueryArg,
   BaseQuery extends BaseQueryFn,
@@ -649,7 +649,7 @@ export interface MutationExtraOptions<
 export type MutationDefinition<
   QueryArg,
   BaseQuery extends BaseQueryFn,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ResultType,
   ReducerPath extends string = string,
 > = BaseEndpointDefinition<QueryArg, BaseQuery, ResultType> &
@@ -684,7 +684,7 @@ export function isMutationDefinition(
 
 export type EndpointBuilder<
   BaseQuery extends BaseQueryFn,
-  TagTypes extends string,
+  TagTypes extends string | null | undefined,
   ReducerPath extends string,
 > = {
   /**
@@ -854,7 +854,7 @@ export type OverrideResultType<Definition, NewResultType> =
 
 export type UpdateDefinitions<
   Definitions extends EndpointDefinitions,
-  NewTagTypes extends string,
+  NewTagTypes extends string | null | undefined,
   NewDefinitions extends EndpointDefinitions,
 > = {
   [K in keyof Definitions]: Definitions[K] extends QueryDefinition<
