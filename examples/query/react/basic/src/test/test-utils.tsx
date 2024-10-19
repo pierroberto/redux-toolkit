@@ -1,18 +1,17 @@
-import { render } from '@testing-library/react'
 import type { RenderOptions } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import type React from 'react'
-import type { PropsWithChildren, JSX } from 'react'
+import type { JSX, PropsWithChildren } from 'react'
 import { Provider } from 'react-redux'
-import { setupStore } from '../store'
 import type { AppStore, RootState } from '../store'
-import type { PreloadedState } from '@reduxjs/toolkit'
+import { setupStore } from '../store'
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store. For
 // future dependencies, such as wanting to test with react-router, you can extend
 // this interface to accept a path and route and use those in a <MemoryRouter />
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-  preloadedState?: PreloadedState<RootState>
+  preloadedState?: Partial<RootState>
   store?: AppStore
 }
 

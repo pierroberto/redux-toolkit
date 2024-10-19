@@ -1,17 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import type { PreloadedState } from '@reduxjs/toolkit'
 import { pokemonApi } from './services/pokemon'
 
 const rootReducer = combineReducers({
   [pokemonApi.reducerPath]: pokemonApi.reducer,
 })
 
-export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+export const setupStore = (preloadedState?: Partial<RootState>) => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      // adding the api middleware enables caching, invalidation, polling and other features of `rtk-query`
-      getDefaultMiddleware().concat(pokemonApi.middleware),
+    middleware: (getDefaultMiddleware) => {
+        return getDefaultMiddleware().concat(pokemonApi.middleware as any)
+
+      },
     preloadedState,
   })
 }
